@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Items API</title>
+</head>
+<body>
+
+  <label for="">Items:</label>
+  <select name="" id="itemList"></select>
+  <label for=" ">Add a new item</label>
+  <input type="text" id="itemTxt">
+  <button id="btnAdd">Add item</button>
+
+  <script type="text/javascript">
+
+    const listItem = document.getElementById("itemList")
+    const addItem = document.getElementById("btnAdd")
+    const textItem = document.getElementById("itemTxt")
+
+    fetch("http://localhost:8888/list")
+    .then(response => response.json())
+    .then(jsonResponse => jsonResponse.forEach(
+      item => {
+        let o = document.createElement("option")
+        o.textContent = item
+        listItem.appendChild(o)
+      }))
+
+    addItem.addEventListener("click", e => {
+      let item = textItem.value;
+      fetch(`http://localhost:8888/list?item=${item}`,{"method":"POST"})
+      .then(response => response.json())
+      .then(jsonResponse => alert(jsonResponse.message))
+    })
+  </script>
+</body>
+</html>
