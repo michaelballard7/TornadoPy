@@ -3,3 +3,7 @@ strategy
 risk_model
 "econ model"
 news_app
+Lawrence
+"zipline model"
+dante
+Shawn

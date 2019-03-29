@@ -41,7 +41,7 @@ class listRequestHandler(tornado.web.RequestHandler):
 
 class jsRequestHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render("js.html") 
+        self.render("js.html")
 
 
 if __name__ == "__main__":
